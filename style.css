@@ -9,7 +9,6 @@ body{
     
     /* STYLE TEXT */
     header{
-        position: relative;
         display: flex; 
         justify-content: space-between; /* Separate name and nav bar */
         align-items: center; /* Align items vertically */
@@ -28,7 +27,6 @@ body{
       text-align: center;
       font-size: 2em; 
       padding-top: 1em; 
-      text-shadow: 3px 4px #728E75; 
     }
     
     nav{ 
@@ -62,7 +60,6 @@ body{
         margin: 0 auto;
         max-width: 800px; /* Center the content */
         background-color: #9EBDAA;
-        border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
@@ -79,7 +76,6 @@ body{
         display: block; /* Center it */
         margin: 2em auto 1em auto; /* Added margin */
         border-radius: 80%;
-        border: 5px solid #728E75;
     }
 
     .intro {
