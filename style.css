@@ -1,6 +1,6 @@
 /* STYLE SECTIONING TAGS */
 body{
-    background-image: #9EBDAA;
+    background-color: #9EBDAA;
     }
     *{
       margin: 0px;
@@ -58,6 +58,7 @@ body{
     main { 
         margin: 0 auto;
         width: 100%;
+        max-width: 800px;
         background-color: #9EBDAA;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
@@ -80,7 +81,7 @@ body{
     .intro {
         color: white;
         font-family: 'Roboto', sans-serif;
-        font-size: 22px;
+        font-size: 20px;
         text-align: center;
         padding: 1em 0 2em 0; /* Added padding under the text */
     }
