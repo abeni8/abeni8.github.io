@@ -13,7 +13,6 @@ body{
         justify-content: space-between; /* Separate name and nav bar */
         align-items: center; /* Align items vertically */
         background-color: #9EBDAA;
-        padding: 1em 2em; /* Add spacing */
     }
 
     #name {
@@ -58,7 +57,7 @@ body{
     
     main { 
         margin: 0 auto;
-        max-width: 800px; /* Center the content */
+        width: 100%;
         background-color: #9EBDAA;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
