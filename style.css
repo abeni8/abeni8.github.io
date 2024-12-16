@@ -9,9 +9,20 @@ body{
     
     /* STYLE TEXT */
     header{
-      text-align: center; 
-      background-color: #9EBDAA;  
+        position: relative;
+        display: flex; 
+        justify-content: space-between; /* Separate name and nav bar */
+        align-items: center; /* Align items vertically */
+        background-color: #9EBDAA;
+        padding: 1em 2em; /* Add spacing */
     }
+
+    #name {
+        color: white;
+        font-size: 2em;
+        font-family: 'Mali', cursive;
+        text-shadow: 3px 4px #728E75;
+      }
     
     h1 {
       color: white;  
@@ -21,20 +32,38 @@ body{
       text-shadow: 3px 4px #728E75; 
     }
     
-    nav{ 
+    /* nav{ 
       text-align: center; 
       font-size: 15px
+    } */
+    nav ul {
+        list-style-type: none;
+    }
+      
+    nav li {
+        display: inline;
+        margin-left: 1.5em;
+    }
+    
+    nav li a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.2em;
+    }
+
+    nav li a:hover {
+        background-color: #B8D9D0;
+        border-radius: 5px;
+        padding: 0.3em;
     }
     
     main { 
-      margin-top: 0;
-      margin-bottom: 0;
-      margin-left: 5%;
-      margin-right: 5%; 
-      background-color: #9EBDAA;  
-      padding-left: 10%;
-      padding-right: 10%; 
-      display: block;
+        margin: 0 auto;
+        max-width: 800px; /* Center the content */
+        padding: 2em;
+        background-color: #9EBDAA;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
     p {
@@ -46,15 +75,22 @@ body{
     }
     
     #portrait{
-      max-width: 30%; 
-      max-height: 20%; 
-      border-radius: 80%; 
-      border: 5px solid #728E75;     
-      margin-bottom: 1em; 
-      margin-top: 1em; 
+        max-width: 20%; /* Reduced size */
+        display: block; /* Center it */
+        margin: 2em auto 1em auto; /* Added margin */
+        border-radius: 80%;
+        border: 5px solid #728E75;
+    }
+
+    .intro {
+        color: white;
+        font-family: 'Mali', cursive;
+        font-size: 22px;
+        text-align: center;
+        padding: 1em 0 2em 0; /* Added padding under the text */
     }
     
-    ul{
+    /* ul{
       list-style-type: none; 
       background-color: #728E75;  
       overflow: hidden; 
@@ -74,7 +110,7 @@ body{
     
      li a:hover{
     background-color: #B8D9D0; 
-     } 
+     }  */
 
     /* STYLE IMAGES */
     
