@@ -37,7 +37,7 @@
 /* ---- Dark Theme Variables ---- */
 :root[data-theme="dark"] {
   --bg: #030920;
-  --surface: #121826;
+  --surface: #03091e;
   --text: #f5f7fb;
   --muted: #b4bccb;
   --border: #232a3a;
@@ -116,6 +116,7 @@ button { font: inherit; cursor: pointer; }
   align-items: center;
   justify-content: flex-end; 
   width: 100%
+  padding-block: 16px;
 }
 
 .nav-links {
