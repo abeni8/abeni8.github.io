@@ -359,16 +359,7 @@ body {
 /* --- LIGHT THEME --- */
 :root:not([data-theme]),           
 :root[data-theme="light"] body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
   background-image: url("assets/bg/leaf-left.svg"), url("assets/bg/leaf-right.svg");
-  background-repeat: no-repeat;
-  background-position: left -24px bottom -24px, right -12px center;
-  background-size: clamp(160px, 22vw, 320px), clamp(160px, 22vw, 320px);
-  opacity: 0.25;  /* makes images 75% transparent */
-  pointer-events: none;  /* don’t block clicks */
-  z-index: -1;
 }
 
 /* --- DARK THEME --- */
@@ -378,21 +369,6 @@ body {
   z-index: -1;           /* behind everything */
   pointer-events: none;  /* never blocks clicks */
   background-color: #1f1e25; /* dark base for space */
-}
-
-/* Starfield: lots of tiny dots (two tiled layers for randomness) */
-:root[data-theme="dark"] .sky {
-  background-image:
-    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.8) 50%, transparent 52%),
-    radial-gradient(1.5px 1.5px at 70% 60%, rgba(255,255,255,0.75) 50%, transparent 52%),
-    radial-gradient(1.2px 1.2px at 40% 80%, rgba(255,255,255,0.7) 50%, transparent 52%),
-    radial-gradient(1.8px 1.8px at 85% 25%, rgba(255,255,255,0.8) 50%, transparent 52%),
-    radial-gradient(1.4px 1.4px at 10% 75%, rgba(255,255,255,0.7) 50%, transparent 52%);
-  background-repeat: repeat;
-  /* tile sizes: two large sheets overlapping for a natural scatter */
-  background-size: 900px 600px, 1100px 700px, 1000px 900px, 1200px 800px, 950px 650px;
-  animation: twinkle 6s linear infinite;
-  opacity: 0.9; /* a hair of softness */
 }
 
 /* Soft glowing moon in the upper-right */
