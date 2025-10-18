@@ -36,7 +36,7 @@
 
 /* ---- Dark Theme Variables ---- */
 :root[data-theme="dark"] {
-  --bg: #2e2b32;
+  --bg: #050e2e;
   --surface: #121826;
   --text: #f5f7fb;
   --muted: #b4bccb;
@@ -348,7 +348,7 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, .card:focus-visible {
 body {
   background-color: var(--bg);
   /* control images via variables per theme */
-  background-image: var(--bg-images, none);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), var(--bg-images);
   background-repeat: no-repeat;
   /* Left-bottom and right-center */
   background-position: left -24px bottom -24px, right -12px center;
@@ -391,7 +391,7 @@ body {
 :root[data-theme="dark"] .sky::after {
   content: "";
   position: absolute;
-  top: 32px;
+  top: 40px;
   right: 24px;
   width: clamp(80px, 12vw, 140px);
   height: clamp(80px, 12vw, 140px);
