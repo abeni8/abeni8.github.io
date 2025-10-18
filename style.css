@@ -1,6 +1,6 @@
 
 /* ---- Fonts ---- */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap");
+
 
 /* ---- Root Variables (Light) ---- */
 :root {
@@ -22,7 +22,7 @@
   --pad: clamp(16px, 1.5vw, 24px);
 
   /* typography (fluid) */
-  --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --fs-hero: clamp(28px, 5vw, 56px);
   --fs-h1: clamp(24px, 3.2vw, 40px);
   --fs-h2: clamp(20px, 2.6vw, 28px);
