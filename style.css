@@ -114,15 +114,8 @@ button { font: inherit; cursor: pointer; }
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding-block: 14px;
-}
-
-.brand {
-  font-weight: 800;
-  letter-spacing: 0.2px;
-  font-size: 20px;
+  justify-content: flex-end; 
+  width: 100%
 }
 
 .nav-links {
@@ -258,7 +251,7 @@ button { font: inherit; cursor: pointer; }
 .card:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow);
-  border-color: color-mix(in oklab, var(--border), var(--brand) 12%);
+  /* border-color: color-mix(in oklab, var(--border), var(--brand) 12%); */
 }
 
 .card--link {
@@ -366,8 +359,8 @@ body {
 :root:not([data-theme]),           
 :root[data-theme="light"] {
   --bg-images:
-    url("assets/bg/leaf-left.svg"),
-    url("assets/bg/leaf-right.svg");
+    url("assets/leaf-left.svg"),
+    url("assets/leaf-right.svg");
 }
 
 /* --- DARK THEME --- */
@@ -391,7 +384,7 @@ body::before {
   background:
     radial-gradient(600px 280px at 12% 12%, rgba(90,120,255,0.12), transparent 60%),
     radial-gradient(520px 240px at 85% 80%, rgba(255,120,180,0.10), transparent 60%),
-    url("assets/bg/stars.svg");
+    url("assets/stars.svg");
   background-repeat: no-repeat, no-repeat, repeat;
   background-size: cover, cover, auto;
 }
