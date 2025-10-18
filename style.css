@@ -91,7 +91,7 @@ button { font: inherit; cursor: pointer; }
 }
 
 .section {
-  padding: clamp(48px, 8vw, 96px) 0;
+  padding: clamp(24px, 4vw, 48px) 0;
 }
 
 .surface {
