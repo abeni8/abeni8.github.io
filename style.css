@@ -22,7 +22,7 @@
   --pad: clamp(16px, 1.5vw, 24px);
 
   /* typography (fluid) */
-  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --fs-hero: clamp(28px, 5vw, 56px);
   --fs-h1: clamp(24px, 3.2vw, 40px);
   --fs-h2: clamp(20px, 2.6vw, 28px);
@@ -144,23 +144,20 @@ button { font: inherit; cursor: pointer; }
   transform: translateY(-1px);
 }
 
-/* Theme toggle (just the look; JS adds data-theme attr) */
-.toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+/* toggle */
+.toggle { display: inline-block; }
+.toggle-btn{
+  font-size: 12px;
   padding: 6px 10px;
+  border-radius: 999px;
   border: 1px solid var(--border);
-  border-radius: 999px;
   background: var(--surface);
+  color: var(--text);
+  line-height: 1;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
-.toggle button {
-  border: none;
-  background: var(--brand);
-  color: white;
-  border-radius: 999px;
-  padding: 6px 10px;
-}
+.toggle-btn:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+
 
 /* ---- Hero ---- */
 .hero {

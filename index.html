@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Abeni Liu</title>
   <meta name="description" content="Abeni Liu" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <!-- Optional favicon
   <link rel="icon" href="assets/images/favicon.png" />
@@ -21,7 +22,9 @@
         <a href="portfolio.html">Portfolio</a>
         <a href="contact.html">Contact</a>
         <div class="toggle">
-          <button id="themeBtn" aria-label="Toggle dark/light theme">Toggle</button>
+          <button id="themeBtn" class="toggle-btn" aria-pressed="false">
+            <span id="themeLabel" aria-hidden="true">🌙</span>
+          </button>
         </div>
       </div>
     </nav>
@@ -104,22 +107,29 @@
 
   <!-- ===== Theme + little helpers ===== -->
   <script>
-    // Theme toggle with persistence
-    const r = document.documentElement;
-    const btn = document.getElementById('themeBtn');
+  const root = document.documentElement;
+  const btn  = document.getElementById('themeBtn');
+  const lab  = document.getElementById('themeLabel');
 
-    // load saved preference (if any)
-    const saved = localStorage.getItem('theme');
-    if (saved) r.dataset.theme = saved;
+  // Apply theme + set button label to the *target* state
+  function applyTheme(theme) {
+    root.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+    lab.textContent = theme === 'dark' ? '☀️' : '🌙';
+    btn.setAttribute('aria-pressed', theme === 'dark');
+  }
 
-    btn?.addEventListener('click', () => {
-      const next = r.dataset.theme === 'dark' ? 'light' : 'dark';
-      r.dataset.theme = next;
-      localStorage.setItem('theme', next);
-    });
+  // initial theme: saved → system → light
+  const initial =
+    localStorage.getItem('theme') ||
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
-    // current year for footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  applyTheme(initial);
+
+  btn?.addEventListener('click', () => {
+    applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+  });
+</script>
+
 </body>
 </html>
