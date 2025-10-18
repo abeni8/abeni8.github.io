@@ -10,7 +10,7 @@
 
   /* light theme */
   --bg: #f4f2e9;
-  --surface: #4d4c49;
+  --surface: #fffef8;
   --text: #0b1220;
   --muted: #5b6472;
   --border: #e6e7ec;
@@ -36,7 +36,7 @@
 
 /* ---- Dark Theme Variables ---- */
 :root[data-theme="dark"] {
-  --bg: #0c1118;
+  --bg: #2e2b32;
   --surface: #121826;
   --text: #f5f7fb;
   --muted: #b4bccb;
