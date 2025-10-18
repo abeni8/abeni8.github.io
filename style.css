@@ -9,8 +9,8 @@
   --brand-2: #f8f0dd;        
 
   /* light theme */
-  --bg: #f7f7f8;
-  --surface: #ffffff;
+  --bg: #f4f2e9;
+  --surface: #4d4c49;
   --text: #0b1220;
   --muted: #5b6472;
   --border: #e6e7ec;
@@ -129,6 +129,7 @@ button { font: inherit; cursor: pointer; }
   display: flex;
   gap: 20px;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .nav a {
@@ -255,10 +256,25 @@ button { font: inherit; cursor: pointer; }
   transition: transform .15s ease, box-shadow .25s ease, border-color .25s ease;
 }
 .card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   box-shadow: var(--shadow);
   border-color: color-mix(in oklab, var(--border), var(--brand) 12%);
 }
+
+.card--link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .15s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.card--link:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+  border-color: color-mix(in oklab, var(--border), var(--brand) 15%);
+}
+
 .card h3 {
   margin: 0;
   font-size: var(--fs-h2);
@@ -333,5 +349,50 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, .card:focus-visible {
   font-family: "Major Mono Display", monospace !important;
   font-weight: 400;
   font-style: normal;
+}
+
+/* Base background color */
+body {
+  background-color: var(--bg);
+  /* control images via variables per theme */
+  background-image: var(--bg-images, none);
+  background-repeat: no-repeat;
+  /* Left-bottom and right-center */
+  background-position: left -24px bottom -24px, right -12px center;
+  background-size: clamp(160px, 22vw, 320px), clamp(160px, 22vw, 320px);
+}
+
+/* --- LIGHT THEME --- */
+:root:not([data-theme]),           
+:root[data-theme="light"] {
+  --bg-images:
+    url("assets/bg/leaf-left.svg"),
+    url("assets/bg/leaf-right.svg");
+}
+
+/* --- DARK THEME --- */
+:root[data-theme="dark"] {
+  --bg-images: none;  /* remove leafy images from body */
+}
+
+/* Add a subtle dark overlay using a fixed pseudo element */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;             /* stays behind all content */
+  pointer-events: none;    /* never blocks clicks */
+  background: none;        /* default: off in light mode */
+  opacity: 0.55;
+}
+
+/* Activate space vibes only in dark mode */
+:root[data-theme="dark"] body::before {
+  background:
+    radial-gradient(600px 280px at 12% 12%, rgba(90,120,255,0.12), transparent 60%),
+    radial-gradient(520px 240px at 85% 80%, rgba(255,120,180,0.10), transparent 60%),
+    url("assets/bg/stars.svg");
+  background-repeat: no-repeat, no-repeat, repeat;
+  background-size: cover, cover, auto;
 }
 
