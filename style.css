@@ -328,8 +328,9 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, .card:focus-visible {
   transition: box-shadow .2s ease;
 }
 
+/* Title-only font */
 .major-mono-display-regular {
-  font-family: "Major Mono Display", monospace;
+  font-family: "Major Mono Display", monospace !important;
   font-weight: 400;
   font-style: normal;
 }
