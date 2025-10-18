@@ -364,28 +364,69 @@ body {
 }
 
 /* --- DARK THEME --- */
-:root[data-theme="dark"] {
-  --bg-images: none;  /* remove leafy images from body */
-}
-
-/* Add a subtle dark overlay using a fixed pseudo element */
-body::before {
-  content: "";
+:root[data-theme="dark"] .sky {
   position: fixed;
   inset: 0;
-  z-index: -1;             /* stays behind all content */
-  pointer-events: none;    /* never blocks clicks */
-  background: none;        /* default: off in light mode */
-  opacity: 0.55;
+  z-index: -1;           /* behind everything */
+  pointer-events: none;  /* never blocks clicks */
+  background-color: #1f1e25; /* dark base for space */
 }
 
-/* Activate space vibes only in dark mode */
-:root[data-theme="dark"] body::before {
+/* Starfield: lots of tiny dots (two tiled layers for randomness) */
+:root[data-theme="dark"] .sky {
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.8) 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 70% 60%, rgba(255,255,255,0.75) 50%, transparent 52%),
+    radial-gradient(1.2px 1.2px at 40% 80%, rgba(255,255,255,0.7) 50%, transparent 52%),
+    radial-gradient(1.8px 1.8px at 85% 25%, rgba(255,255,255,0.8) 50%, transparent 52%),
+    radial-gradient(1.4px 1.4px at 10% 75%, rgba(255,255,255,0.7) 50%, transparent 52%);
+  background-repeat: repeat;
+  /* tile sizes: two large sheets overlapping for a natural scatter */
+  background-size: 900px 600px, 1100px 700px, 1000px 900px, 1200px 800px, 950px 650px;
+  animation: twinkle 6s linear infinite;
+  opacity: 0.9; /* a hair of softness */
+}
+
+/* Soft glowing moon in the upper-right */
+:root[data-theme="dark"] .sky::after {
+  content: "";
+  position: absolute;
+  top: 32px;
+  right: 24px;
+  width: clamp(80px, 12vw, 140px);
+  height: clamp(80px, 12vw, 140px);
+  border-radius: 50%;
+  /* two glows + bright core */
   background:
-    radial-gradient(600px 280px at 12% 12%, rgba(90,120,255,0.12), transparent 60%),
-    radial-gradient(520px 240px at 85% 80%, rgba(255,120,180,0.10), transparent 60%),
-    url("assets/stars.svg");
-  background-repeat: no-repeat, no-repeat, repeat;
-  background-size: cover, cover, auto;
+    radial-gradient(circle at 50% 50%, rgba(255,243,204,0.95) 0 58%, rgba(255,243,204,0) 62%),
+    radial-gradient(circle at 50% 50%, rgba(255,230,140,0.45) 0 70%, rgba(255,230,140,0) 75%),
+    radial-gradient(circle at 60% 40%, #ffe6a0 0 52%, #ffe6a0 52%); /* body */
+  filter: drop-shadow(0 0 24px rgba(255,230,140,0.35))
+          drop-shadow(0 0 48px rgba(255,230,140,0.2));
+  opacity: 0.95;
 }
 
+/* A handful of bigger, soft yellow "bubbly" stars that float a bit */
+:root[data-theme="dark"] .sky::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle, rgba(255,236,170,0.9) 0 3px, transparent 4px) 12% 35% / auto no-repeat,
+    radial-gradient(circle, rgba(255,236,170,0.8) 0 4px, transparent 5px) 32% 72% / auto no-repeat,
+    radial-gradient(circle, rgba(255,236,170,0.85) 0 5px, transparent 6px) 68% 22% / auto no-repeat,
+    radial-gradient(circle, rgba(255,236,170,0.8) 0 4px, transparent 5px) 82% 64% / auto no-repeat;
+  animation: float-slow 14s ease-in-out infinite alternate;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* Gentle motion + slight twinkle */
+@keyframes float-slow {
+  from { transform: translateY(0px); }
+  to   { transform: translateY(8px); }
+}
+@keyframes twinkle {
+  0%, 100% { filter: brightness(1); }
+  50%      { filter: brightness(1.08); }
+}
