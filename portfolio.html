@@ -1,74 +1,217 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Abeni Liu | Portfolio</title>
-  <link rel="stylesheet" href="/style.css" />
-  <style>
-    .work-title {
-      font-size: 1.8em;
-      font-weight: bold;
-      font-family: 'Roboto', sans-serif;
-      margin-top: 1em;
-      color: #728E75;
-    }
-
-    .work-details {
-      font-size: 1em;
-      margin-bottom: 0.5em;
-      font-family: 'Roboto', sans-serif;
-      text-align: left;
-    }
-
-    .description {
-      font-size: 1.1em;
-      margin-bottom: 1em;
-      font-family: 'Roboto', sans-serif;
-      text-align: left;
-    }
-
-    a.work-link {
-      text-decoration: none;
-      color: #728E75; 
-      font-weight: bold;
-    }
-
-    a.work-link:hover {
-        color: #B8D9D0;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <!-- Header Section -->
-  <header>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="./portfolio">Portfolio</a></li>
-      </ul>
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <nav class="nav container">
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="portfolio.html" aria-current="page">Portfolio</a>
+        <div class="toggle">
+          <button id="themeBtn" class="toggle-btn" aria-pressed="false">
+            <span id="themeLabel" aria-hidden="true">🌙</span>
+          </button>
+        </div>
+      </div>
     </nav>
-    <h1 id="name">Abeni Liu</h1> 
   </header>
 
-  <!-- Main Content -->
-  <main>
+  <!-- Page Title -->
+  <section class="section container center">
+    <h1 class="hero__title">Portfolio</h1>
+    <p class="hero__tagline"> work & experience</p>
+  </section>
 
-    <!-- Work Example 1 -->
-    <div class="work-item">
-      <h2 class="work-title">Software Engineering Researcher</h2>
-      <p class="work-details">June 2024 - Present | UCLA LEMUR Lab, Los Angeles, CA</p>
-      <p class="description">
-        River routing simulation for a river basin with 5,175 river reaches. Python for implementation and Git for version control.
-      </p>
-      <p class="description">
-        Participated in UCLA Samueli School of Engineering Summer Undergraduate Research Program (SURP) 2024. Published findings in the SURP journal, delivered an oral presentation, and presented a poster at the symposium.
-      </p>
-      <a href="https://drive.google.com/file/d/1bvclljO_BX1bO8hqNAn7-RPT9tn9oUzK/view" class="work-link">View SURP Journal 2024</a>
+  <!-- Continuous Card -->
+  <section class="section container">
+    <div class="surface portfolio-panel">
+      <!-- Entry -->
+      <article class="entry">
+        <header class="entry__header">
+          <h2 class="entry__title">Software Engineering Researcher</h2>
+          <div class="entry__meta">
+            <span>UCLA LEMUR Lab · Los Angeles, CA</span>
+            <span>Jun 2024 – Present</span>
+          </div>
+        </header>
+        <p class="entry__desc">
+          River routing simulation across 5,175 reaches; built Python pipelines for dynamic
+          discharge estimation and data assimilation. Version control with Git;
+          presented results via SURP talk & poster; paper published in the SURP journal.
+        </p>
+        <p class="entry__links">
+          <a class="chip" href="https://drive.google.com/file/d/1bvclljO_BX1bO8hqNAn7-RPT9tn9oUzK/view" target="_blank" rel="noopener">SURP Journal 2024</a>
+        </p>
+        <ul class="entry__tags">
+          <li>Python</li><li>NumPy</li><li>Kalman</li><li>GIS</li>
+        </ul>
+      </article>
+
+      <!-- Duplicate this block for more entries -->
+      <article class="entry">
+        <header class="entry__header">
+          <h2 class="entry__title">Sleep-Mask Dashboard (SomniGuard)</h2>
+          <div class="entry__meta">
+            <span>BMES Design Team</span>
+            <span>2024 – Present</span>
+          </div>
+        </header>
+        <p class="entry__desc">
+          Django + React + MQTT pipeline to ingest biosensor streams (heart rate, movement),
+          visualize trends, and store data in PostgreSQL with JWT auth. Local Mosquitto broker;
+          planned AWS IoT deployment.
+        </p>
+        <p class="entry__links">
+          <a class="chip" href="https://sleepmask.github.io/somniguard.github.io/" target="_blank" rel="noopener">Live Panel</a>
+        </p>
+        <ul class="entry__tags">
+          <li>Python</li><li>Django REST</li><li>React</li><li>PostgreSQL</li><li>MQTT</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <header class="entry__header">
+          <h2 class="entry__title">Spotify Explorer</h2>
+          <div class="entry__meta">
+            <span>Independent</span>
+            <span>2024</span>
+          </div>
+        </header>
+        <p class="entry__desc">
+          Lightweight analytics on track features (danceability, energy, tempo) with interactive plots
+          and simple popularity models; quick EDA and feature engineering from CSVs.
+        </p>
+        <ul class="entry__tags">
+          <li>Pandas</li><li>Plotly</li><li>EDA</li>
+        </ul>
+      </article>
     </div>
+  </section>
 
-    <!-- more work sections -->
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Abeni Liu</small>
+    </div>
+  </footer>
 
-  </main>
+  <!-- Theme toggle script (same as home) -->
+  <script>
+    const root = document.documentElement;
+    const btn  = document.getElementById('themeBtn');
+    const lab  = document.getElementById('themeLabel');
+
+    function applyTheme(theme) {
+      root.dataset.theme = theme;
+      localStorage.setItem('theme', theme);
+      lab.textContent = theme === 'dark' ? '☀️' : '🌙';
+      btn.setAttribute('aria-pressed', theme === 'dark');
+    }
+
+    const initial =
+      localStorage.getItem('theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    applyTheme(initial);
+
+    btn?.addEventListener('click', () => {
+      applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Page-specific minimal styles -->
+  <style>
+    /* One big panel with generous padding */
+    .portfolio-panel {
+      padding: clamp(20px, 3.5vw, 36px);
+    }
+
+    /* Each entry = clean block with space between */
+    .entry {
+      padding: clamp(14px, 2.2vw, 22px) 0;
+      border-top: 1px solid var(--border);
+    }
+    .entry:first-child { border-top: none; }
+
+    .entry__header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 16px;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+
+    .entry__title {
+      margin: 0;
+      font-size: clamp(22px, 2.4vw, 30px); /* bigger, minimal */
+      letter-spacing: -0.01em;
+    }
+
+    .entry__meta {
+      display: flex;
+      gap: 14px;
+      color: var(--muted);
+      font-size: clamp(14px, 1.4vw, 15px);
+    }
+
+    .entry__desc {
+      margin: 6px 0 10px 0;
+      max-width: 70ch;
+      color: var(--text);
+      font-size: clamp(16px, 1.6vw, 18px);
+      line-height: 1.65;
+    }
+
+    /* small inline link chips */
+    .entry__links { margin: 6px 0 2px 0; }
+    .chip {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 14px;
+      text-decoration: none;
+      transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .chip:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+      border-color: color-mix(in oklab, var(--border), var(--brand) 14%);
+    }
+
+    /* tech tags */
+    .entry__tags {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0;
+      margin: 6px 0 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .entry__tags li {
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: color-mix(in oklab, var(--surface), var(--border) 16%);
+    }
+
+    /* Responsive spacing */
+    @media (max-width: 900px) {
+      .entry__meta { width: 100%; justify-content: flex-start; }
+      .entry__desc { max-width: 100%; }
+    }
+  </style>
 </body>
 </html>

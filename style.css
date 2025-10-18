@@ -36,7 +36,7 @@
 
 /* ---- Dark Theme Variables ---- */
 :root[data-theme="dark"] {
-  --bg: #050e2e;
+  --bg: #030920;
   --surface: #121826;
   --text: #f5f7fb;
   --muted: #b4bccb;
@@ -348,7 +348,7 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, .card:focus-visible {
 body {
   background-color: var(--bg);
   /* control images via variables per theme */
-  background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), var(--bg-images);
+  background-image: var(--bg-images);
   background-repeat: no-repeat;
   /* Left-bottom and right-center */
   background-position: left -24px bottom -24px, right -12px center;
@@ -357,10 +357,17 @@ body {
 
 /* --- LIGHT THEME --- */
 :root:not([data-theme]),           
-:root[data-theme="light"] {
-  --bg-images:
-    url("assets/leaf-left.svg"),
-    url("assets/leaf-right.svg");
+:root[data-theme="light"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("assets/bg/leaf-left.svg"), url("assets/bg/leaf-right.svg");
+  background-repeat: no-repeat;
+  background-position: left -24px bottom -24px, right -12px center;
+  background-size: clamp(160px, 22vw, 320px), clamp(160px, 22vw, 320px);
+  opacity: 0.25;  /* makes images 75% transparent */
+  pointer-events: none;  /* don’t block clicks */
+  z-index: -1;
 }
 
 /* --- DARK THEME --- */
